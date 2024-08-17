@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail Copier 9</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./mailCopier9.js"></script>
+    <script src="./mainReply.js"></script>
+</head>
+<body>
+    <p class="appTitle">This application is software that copies mail to IMAP (Internet Access Message Protocol). <br/>
+        First, enter the mail server and account information you want to copy to (Source).<br/>
+        Then, enter the destination mail server and account information to connect to it (Destination).<br/>
+        Finally, select the mailboxes you want to copy and click “Copy Mails”.
+    </p>
+    <div class="container">
+        <div class="leftContainer scrollable">
+            <div class="formContainer">
+                <div class="form-section">
+                    <h4>Source Email Account</h4>
+                    <form id="sourceForm">
+                        <div class="form-group">
+                            <label for="sourceHost">IMAP Host:</label><input type="text" id="sourceHost" required value="localhost">
+                        </div>
+                        <div class="form-group">
+                            <label for="sourcePort">Port:</label>
+                            <div class="form-group_sub">
+                                <select id="sourcePort">
+                                    <option value="143">143</option>
+                                    <option value="993">993</option>
+                                </select>
+                                <input type="checkbox" id="sourceSSL" name="sourceSSL" style="margin-left: 20px;">	                            
+                                <label for="sourceSSL">SSL</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="sourceUser">Username:</label><input type="text" id="sourceUser" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sourcePassword">Password:</label><input type="password" id="sourcePassword">
+                        </div>
+                        <div class="form-group">
+                            <label for="start-date">Term:</label><input type="date" id="start-date">
+                            <input type="date" id="end-date">
+                        </div>
+                        <button type="button" id="connectSource">Connect Source</button>
+                    </form>
+                </div>
+
+                <div class="form-section">
+                    <h4>Destination Email Account</h4>
+                    <form id="destForm">
+                        <div class="form-group">
+                            <label for="destHost">IMAP Host:</label><input type="text" id="destHost" required value="localhost">
+                        </div>
+                        <div class="form-group">
+                            <label for="destPort">Port:</label>
+                            <div class="form-group_sub">
+                                <select id="destPort">
+                                    <option value="143">143</option>
+                                    <option value="993">993</option>
+                                </select>
+                                <input type="checkbox" id="destSSL" name="destSSL" style="margin-left: 20px;">	                            
+                                <label for="destSSL">SSL</label>
+                            </div>                            
+                        </div>
+                        <div class="form-group">
+                            <label for="destUser">Username:</label><input type="text" id="destUser" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="destPassword">Password:</label><input type="password" id="destPassword" required>
+                        </div>
+                        <button type="button" id="connectTarget">Connect Destination </button>
+                    </form>
+                </div>
+            </div>
+            <div class="scrollable">
+                <button type="button" id="copyMails">Copy Mails</button>
+                <select id="selectTargetMailbox" class="selectTargetMailbox">
+                    <!--option value="⇒">Same</option>
+                    <option value="INBOX">INBOX</option-->
+                </select>              
+                <table>
+                <tr>
+                    <th style="width:150px">Source MailBox</th>
+                    <th style="width:50px">Count</th>
+                    <th style="width:30px"><input type="checkbox" id="selectAllSourceMailBox" title="Select All"></th>
+                    <th style="width:150px">Target MailBox</th>
+                    <th style="width:50px">Count</th>
+                </tr>
+                <tbody id="mailboxMapper"></tbody>
+                </table>
+            </div>              
+        </div>  
+        <div class="rightContainer scrollable">
+            <div id="logDiv"></div>
+        </div>
+    </div>
+</body>
+</html>

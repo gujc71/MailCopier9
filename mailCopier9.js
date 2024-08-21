@@ -59,8 +59,9 @@ function connectTarget() {
 function copyMails() {
 	const startDate = document.getElementById('start-date').value || null;
 	const endDate   = document.getElementById('end-date').value || null;
-	const mailboxMapper = document.getElementById("mailboxMapper");
 	const checkboxes = mailboxMapper.querySelectorAll("input[type='checkbox']");
+	const mailboxMapper = document.getElementById("mailboxMapper");
+	mailboxMapper.firstChild.firstChild.click();  // selectTargetMailbox hide
 
 	const selectedMailboxList = [];
 	checkboxes.forEach(function(checkbox) {

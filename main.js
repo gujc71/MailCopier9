@@ -170,7 +170,7 @@ ipcMain.on('RunCopyEmails', async (event, selectedMailboxList, startDate, endDat
   sendLog( `Total Messages : ${totalCnt}`);
   sendLog( `Fetch Error Messages : ${fetchErrorCnt}`);
   sendLog( `Copy Error Messages : ${copyErrorCnt}`);
-  sendLog( `Execution Time: ${executionTime/1000/60} minute`);
+  sendLog( `Execution Time: ${Math.round(executionTime/1000/60)} minute`);
 });
 
 function openBox(imap, mailbox, readOnly) {
